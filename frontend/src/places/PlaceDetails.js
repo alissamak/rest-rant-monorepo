@@ -50,6 +50,7 @@ function PlaceDetails() {
 	async function createComment(commentAttributes) {
 		const response = await fetch(`http://localhost:5000/places/${place.placeId}/comments`, {
 			method: 'POST',
+			credentials: 'include',
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -59,11 +60,11 @@ function PlaceDetails() {
 		const comment = await response.json()
 
 		setPlace({
-			...place,
-			comments: [
-				...place.comments,
-				comment
-			]
+				...place,
+				comments: [
+					...place.comments,
+					comment
+				]
 		})
 
 	}
